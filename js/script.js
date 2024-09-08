@@ -19,3 +19,19 @@ function showData(dataArray) {
 }
 
 // Escribe el código necesario para realizar el fetch al archivo con los datos y mostrar los estudiantes con la función showData
+
+function showData(dataArray) {
+  for (const item of dataArray.students) {
+    container.innerHTML += `<p> ${item.name} ${item.lastname} </p>`;
+  }
+}
+
+
+fetch(DATA_URL)
+  .then(response => response.json()) 
+  .then(data => {
+    showData(data);
+  })
+  .catch(error => {
+    console.error("Error al cargar los datos:", error);
+  });
